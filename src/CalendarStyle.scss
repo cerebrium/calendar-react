@@ -1,112 +1,187 @@
-// container for the whole calendar
+$backgroundColor: #f7f7f7;
+$fontOrangeColor: #F0813A;
+$fontOrangeColorHover: #eb884b;
+$fontLogIn: 'Caros Soft';
+$lightTextColor: #A7A7A7;
+$applButtonBorderColor: #232323;
+$logInBoxTopTextColor: #5E4C5A;
+$logInBoxTopTextColorHover: #61505d;
+
 .calendarContainer {
-    width: 294px;
-    border: 1px solid black;
+    grid-area: middleComponent;
+    margin: 0 auto;
+    width: 80vw;
+    padding: 5px 15px 15px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    border-radius: 1rem;
     margin-top: 1rem;
-    box-shadow: -1px 1px 7px rgba(0, 0, 0, 0.459);
+    box-shadow: -1px 1px 13px rgba(0, 0, 0, 0.3);
     animation: slideFromTopHere .5s forwards;
     animation-timing-function: linear;
-    // container for the inital render that makes it dropdown
+    color: $logInBoxTopTextColor;
+    font-family: $fontLogIn;
+    display: inline;
+    min-height: 350px;
+    height: 60vh;
+    z-index: 1;
+    background-color: white;
     .effectsClass {
-        animation: makeVisible .5s forwards;
+        animation: makeVisible 1s forwards;
         visibility: hidden;
     }
-    // all the day labels except the last one which we want to have a different border right color
     .dayLabels {
-        width: 42px;
-        height: 30px;
-        border: 1px solid black;
-        border-right-color: grey;
-        background-color: rgb(44, 44, 44);
+        width: 13vw;
+        min-height: 30px;
+        height: 5vh;
+        border: 1px solid white;
+        border-radius: .5rem;
+        background-color: $fontOrangeColor;
         color: white;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 1em;
     }
-    // the line in between the month and the year
     .spacer {
         margin-left: 4px;
         margin-right: 4px;
     }
-    // allows for hovering over the month name
     .monthSelector {
         font-weight: 400;
-        padding: 2px;
     }
-    // hover effect
     .monthSelector:hover {
-        background-color: lightgray;
+        background-color: $fontOrangeColor;
+        color: white;
     }
-    // same styling as the rest of the month labels, but without right grey border
     .dayLabelsLast {
-        width: 42px;
-        height: 30px;
-        border: 1px solid black;
-        background-color:rgb(44, 44, 44);
+        width: 13vw;
+        min-height: 30px;
+        height: 5vh;
+        border: 1px solid white;
+        border-radius: .5rem;
+        background-color:$fontOrangeColor;
         color: white;
         display: flex;
         align-items: center;
-        justify-content: center
+        justify-content: center;
+        font-size: 1em;
     }
-    // container for the month names
     .labelsContainer {
         display: flex;
     }
-    // container for the day numbers
     .daysContainer {
         display: flex;
         flex-wrap: wrap
     }
-    // day numbers
-    .dayNumbers {
-        width: 40px;
-        height: 25px;
-        text-align: center;
-        border: 1px solid black;
+    #currentSelectionDate {
+        background-color: rgba(128, 128, 128, 0.144);
+        color: $logInBoxTopTextColor;
     }
-    // on hover turn grey
+    // each individual day box
+    .dayNumbers {
+        width: 11.2vw;
+        border-radius: .5rem;
+        position: relative;
+        min-height: 40px;
+        margin: 2px;
+        height: 7.5vh;
+        cursor: pointer;
+        .dayNumbersInner {
+            width: 98%;
+            height: 94%;
+            padding: 1%;
+            border-radius: .5rem;
+            border-left: 1px solid rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+            // put numbers in upper left
+            .numberPlacement {
+                margin-top: 5px;
+                margin-left: 5px;
+                padding: 0;
+                font-weight: 600;
+                font-size: 1em;
+            }
+    
+            .weekPlacement {
+                position: absolute;
+                margin: 0;
+                bottom: 0;
+                right: 4px;
+                padding: 0;
+                font-weight: 600;
+                font-size: .8em;
+                color: gray;
+            }
+    
+            // for haloween
+            .halloweenPumpkin {
+                position: absolute;
+                width: 20px;
+                margin: 0;
+                right: 2px;
+                top: 10px;
+                padding: 0;
+            }
+        }
+    }
     .dayNumbers:hover {
-        background-color: lightgrey;
+        background-color: $fontOrangeColor;
+        color: white;
         font-weight: 600;
     }
-    // picture styling
     .arrowLeft {
         height: 15px;
-        transform: rotate(180deg)
+        transform: rotate(180deg);
+        cursor: pointer;
     }
     .arrowRight {
         height: 15px;
+        cursor: pointer;
     }
     .arrowRightYear {
         height: 15px;
-        margin-left: 60px;
+        position: absolute;
+        top: 10px;
+        right: 4px;
+        cursor: pointer;
     }
     .arrowLeftYear {
         height: 15px;
-        margin-right: 60px;
-        transform: rotate(180deg)
+        position: absolute;
+        top: 10px;
+        left: 4px;
+        transform: rotate(180deg);
+        cursor: pointer;
     }
-    // styling for the row with month name and year number
     .topRow {
-        height: 25px;
+        height: 40px;
         display: flex;
         justify-content: center;
+        position: relative;
+        margin-bottom: 10px;
+        // background-color: rgb(44, 44, 44);
+        // color: white;
     }
-    // container for the images
     .triangleContainers {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 25px;
+        height: 40px;
         width: 20px
     }
-    // positioning for the month name
     .monthName {
         display: flex;
         align-items: center;
         justify-content: center;
         margin-right: 10px;
-        margin-left: 10px
+        margin-left: 10px;
+        font-size: 1.2em;
+        width: 180px;
+        h3 {
+            cursor: pointer;
+            padding: 2px;
+            border-radius: .2rem;
+        }
     }
     // year selection
     .yearRenderContainer {
@@ -114,19 +189,28 @@
         display: flex;
         flex-wrap: wrap;
         overflow-y: scroll;
-        height: 250px;
+        justify-content: center;
+        height: 100%;
 
         .year {
-            border: 1px solid black;
-            width: 93px;
-            height: 61px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            width: 30vw;
+            min-height: 30px;
+            margin: 10px;
+            height: 6vh;
+            font-size: 1.1em;
+            border-radius: 1rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
 
         .year:hover {
-            background-color: lightgray;
+            background-color: $fontOrangeColor;
+            color: white;
+            border: 1px solid $fontOrangeColor;
         }
     }
 
@@ -134,18 +218,31 @@
     .monthRenderContainer {
         display: flex;
         flex-wrap: wrap;
+        height: 100%;
+        // align-items: center;
+        justify-content: center;
 
         .month {
-            border: 1px solid black;
-            width: 96px;
-            height: 61px;
+            border: 1px solid rgba(0, 0, 0, 0.2);;
+            border-radius: 1rem;
+            width: 30vw;
+            margin: 10px;
+            min-height: 30px;
+            height: 6vh;
+            font-size: .9em;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            .monthText {
+                font-size: 1.7em;
+            }
         }
 
         .month:hover {
-            background-color: lightgray;
+            background-color: $fontOrangeColor;
+            color: white;
+            border: 1px solid $fontOrangeColor;
         }
     }
 }
@@ -153,12 +250,10 @@
 // effect for arrival
 @keyframes slideFromTopHere {
     0% {
-      height: 10px;
+      opacity: 0;
     }
     100% {
-      display: inline;
-      height: 252px;
-      z-index: 1;
+        opacity: 1;
     }
 }
 
@@ -167,10 +262,244 @@
     0% {
       visibility: hidden;
     }
-    99% {
-        visibility: hidden;
+    100% {
+      visibility: visible;
+    }
+}
+
+// effect for arrival
+@-webkit-keyframes slideFromTopHere {
+    0% {
+        opacity: 0;
+    } 
+    100% {
+        opacity: 1;
+    }
+}
+
+// effect for arrival
+@-webkit-keyframes makeVisible {
+    0% {
+      visibility: hidden;
     }
     100% {
       visibility: visible;
+    }
+}
+
+@media (max-width: 1760px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.19vw;
+        }
+    }
+}
+@media (max-width: 1695px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.18vw;
+        }
+    }
+}
+@media (max-width: 1630px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.17vw;
+        }
+    }
+}
+@media (max-width: 1575px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.16vw;
+        }
+    }
+}
+@media (max-width: 1510px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.15vw;
+        }
+    }
+}
+@media (max-width: 1450px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.14vw;
+        }
+    }
+}
+@media (max-width: 1410px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.13vw;
+        }
+    }
+}
+@media (max-width: 1360px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.12vw;
+        }
+    }
+}
+@media (max-width: 1310px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.11vw;
+        }
+    }
+}
+@media (max-width: 1275px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.10vw;
+        }
+    }
+}
+@media (max-width: 1235px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.09vw;
+        }
+    }
+}
+@media (max-width: 1195px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.08vw;
+        }
+    }
+}
+@media (max-width: 1165px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.07vw;
+        }
+    }
+}
+@media (max-width: 1135px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.06vw;
+        }
+    }
+}
+@media (max-width: 1105px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.05vw;
+        }
+    }
+}
+@media (max-width: 1080px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.04vw;
+        }
+    }
+}
+@media (max-width: 1050px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.03vw;
+        }
+    }
+}
+@media (max-width: 1020px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.02vw;
+        }
+    }
+}
+@media (max-width: 990px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 11.01vw;
+        }
+    }
+}
+@media (max-width: 960px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.98vw;
+        }
+    }
+}
+@media (max-width: 910px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.94vw;
+        }
+    }
+}
+@media (max-width: 840px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.9vw;
+        }
+    }
+}
+
+@media (max-width: 780px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.85vw;
+        }
+    }
+}
+@media (max-width: 710px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.8vw;
+        }
+    }
+}
+@media (max-width: 660px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.75vw;
+        }
+    }
+}
+@media (max-width: 600px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.7vw;
+        }
+    }
+}
+@media (max-width: 550px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.65vw;
+        }
+    }
+}
+@media (max-width: 520px) {
+    .calendarContainer {
+        .dayNumbers {
+            width: 10.3vw;
+        }
+            // month selection
+        .monthRenderContainer {
+            .month {
+                border: 1px solid rgba(0, 0, 0, 0.2);;
+                border-radius: 1rem;
+                width: 30vw;
+                margin: 10px;
+                min-height: 30px;
+                height: 6vh;
+                font-size: .6em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                .monthText {
+                    font-size: 1.7em;
+                }
+            }
+        }
     }
 }
